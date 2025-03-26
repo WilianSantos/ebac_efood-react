@@ -10,6 +10,7 @@ export const RestaurantContainer = styled.div`
 export const RestaurantImage = styled.img`
   height: 217px;
   width: 100%;
+  object-fit: cover;
 `
 
 export const RestaurantInfos = styled.div`

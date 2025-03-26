@@ -9,7 +9,7 @@ export const ButtonContainer = styled.button<Omit<ButtonProps, 'children'>>`
   color: ${({ background }) =>
     background === 'dark' ? colors.white : colors.primary};
   padding: 4px 6px;
-  ${({ background }) => background === 'light' && `width: 100%`};
+  ${({ width }) => width && `width: ${width}`};
   border: none;
   font-size: 14px;
   cursor: pointer;

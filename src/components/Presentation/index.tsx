@@ -1,18 +1,18 @@
 import { Container } from '../../styles'
 import { PresentationContainer } from './styles'
 
-export type PresentationProps = {
-  name: string
-  category: string
-  imageUrl: string
+type PresentationProps = {
+  title: string
+  type: string
+  cover: string
 }
 
-const Presentation = ({ name, category, imageUrl }: PresentationProps) => {
+const Presentation = ({ title, type, cover }: PresentationProps) => {
   return (
-    <PresentationContainer imageUrl={imageUrl}>
+    <PresentationContainer style={{ backgroundImage: `url(${cover})` }}>
       <Container>
-        <h2>{category}</h2>
-        <h1>{name}</h1>
+        <h2>{type}</h2>
+        <h1>{title}</h1>
       </Container>
     </PresentationContainer>
   )

@@ -4,6 +4,7 @@ import {
   faTwitter,
   faFacebookF
 } from '@fortawesome/free-brands-svg-icons'
+
 import {
   FooterContainer,
   FooterDescription,

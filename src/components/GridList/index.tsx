@@ -1,37 +1,50 @@
-import Food from '../../models/Food'
+import { GridListContainer } from './styles'
+
 import RestaurantModel from '../../models/Restaurant'
+
 import Card from '../Card'
 import Restaurant from '../Restaurant'
-import { GridListContainer } from './styles'
+
+export type Cardapio = {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
 
 export type GridListProps = {
   restaurants?: RestaurantModel[]
   isRestaurant: boolean
-  foods?: Food[]
   columnGrid?: 2 | 3
+  menu?: Cardapio[]
 }
 
-const GridList = ({ restaurants, isRestaurant, foods }: GridListProps) => {
+const GridList = ({ restaurants, isRestaurant, menu }: GridListProps) => {
   return (
     <GridListContainer columnGrid={isRestaurant ? 2 : 3}>
       {isRestaurant
         ? restaurants?.map((restaurant) => (
             <Restaurant
               key={restaurant.id}
-              name={restaurant.name}
-              category={restaurant.category}
-              description={restaurant.description}
-              image={restaurant.image}
-              rating={restaurant.rating}
-              infos={restaurant.infos}
+              id={restaurant.id}
+              title={restaurant.titulo}
+              highlighted={restaurant.destacado}
+              type={restaurant.tipo}
+              rating={restaurant.avaliacao}
+              description={restaurant.descricao}
+              cover={restaurant.capa}
             />
           ))
-        : foods?.map((food) => (
+        : menu?.map((food) => (
             <Card
               key={food.id}
-              name={food.name}
-              description={food.description}
-              image={food.image}
+              name={food.nome}
+              description={food.descricao}
+              photo={food.foto}
+              price={food.preco}
+              portion={food.porcao}
             />
           ))}
     </GridListContainer>

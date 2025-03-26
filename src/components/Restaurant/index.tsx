@@ -14,46 +14,52 @@ import Tag from '../Tag'
 import Button from '../Button'
 
 type RestaurantProps = {
-  name: string
-  category: string
-  description: string
-  image: string
+  id: number
+  title: string
+  highlighted: boolean
+  type: string
   rating: number
-  infos: string[]
+  description: string
+  cover: string
+}
+
+export function limitingString(string: string) {
+  if (string.length > 250) {
+    return string.slice(0, 250) + '...'
+  }
+  return string
 }
 
 const Restaurant = ({
-  name,
-  category,
-  description,
-  image,
+  id,
+  title,
+  highlighted,
+  type,
   rating,
-  infos
+  description,
+  cover
 }: RestaurantProps) => {
   return (
     <RestaurantContainer>
-      <RestaurantImage src={image} alt={name} />
+      <RestaurantImage src={cover} alt={title} />
       <RestaurantInfos>
         <div>
-          <h2>{name}</h2>
+          <h2>{title}</h2>
           <span>
             {rating}
             <FontAwesomeIcon icon={faStar} className="fa-star" />
           </span>
         </div>
-        <RestaurantDescription>{description}</RestaurantDescription>
-        <Link
-          to="/profile"
-          state={{ image: image, name: name, category: category }}
-        >
+        <RestaurantDescription>
+          {limitingString(description)}
+        </RestaurantDescription>
+        <Link to={`/profile/${id}`}>
           <Button background="dark">Saiba mais</Button>
         </Link>
       </RestaurantInfos>
       <RestaurantTags>
-        {infos.map((info) => (
-          <Tag key={info}>{info}</Tag>
-        ))}
-        <Tag>{category}</Tag>
+        {highlighted && <Tag>Destaque da semana</Tag>}
+        <Tag>{type}</Tag>
       </RestaurantTags>
     </RestaurantContainer>
   )

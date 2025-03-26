@@ -1,11 +1,7 @@
 import styled from 'styled-components'
-import { PresentationProps } from '.'
 import { colors, Container } from '../../styles'
 
-export const PresentationContainer = styled.section<
-  Omit<PresentationProps, 'name' | 'category'>
->`
-  background-image: url(${({ imageUrl }) => imageUrl});
+export const PresentationContainer = styled.section`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -27,14 +23,15 @@ export const PresentationContainer = styled.section<
   ${Container} {
     position: relative;
     color: ${colors.white};
-    font-size: 32px;
 
     h2 {
       font-weight: 100;
       margin-bottom: 152px;
+      font-size: 32px;
     }
 
     h1 {
       font-weight: 900;
+      font-size: 32px;
   }
 `

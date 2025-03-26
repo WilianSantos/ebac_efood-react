@@ -7,4 +7,5 @@ export const GridListContainer = styled.section<
   display: grid;
   grid-template-columns: repeat(${({ columnGrid }) => `${columnGrid}`}, 1fr);
   ${({ columnGrid }) => (columnGrid === 2 ? 'gap: 48px 80px;' : 'gap: 32px;')}
+  position: relative;
 `

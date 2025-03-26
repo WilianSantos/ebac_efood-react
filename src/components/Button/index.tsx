@@ -4,11 +4,12 @@ export type ButtonProps = {
   children: string
   width?: string
   background: 'light' | 'dark'
+  onClick?: () => void
 }
 
-const Button = ({ children, width, background }: ButtonProps) => {
+const Button = ({ children, width, background, onClick }: ButtonProps) => {
   return (
-    <ButtonContainer background={background} width={width}>
+    <ButtonContainer onClick={onClick} background={background} width={width}>
       {children}
     </ButtonContainer>
   )

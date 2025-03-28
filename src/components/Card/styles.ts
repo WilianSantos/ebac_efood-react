@@ -24,7 +24,7 @@ export const CardClose = styled.img`
   top: 8px;
   right: 8px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 1;
 `
 
 export const CardContainer = styled.div`
@@ -32,15 +32,6 @@ export const CardContainer = styled.div`
   background-color: ${colors.primary};
   color: ${colors.white};
   cursor: pointer;
-`
-
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
 `
 
 export const Modal = styled(CardContainer)`

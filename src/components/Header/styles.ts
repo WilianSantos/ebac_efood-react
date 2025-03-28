@@ -14,5 +14,9 @@ export const HeaderContainer = styled.header`
     font-size: 18px;
     font-weight: 900;
     color: ${colors.primary};
+
+    span {
+      cursor: pointer;
+    }
   }
 `

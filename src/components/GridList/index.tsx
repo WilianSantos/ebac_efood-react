@@ -1,24 +1,16 @@
 import { GridListContainer } from './styles'
 
 import RestaurantModel from '../../models/Restaurant'
-
 import Card from '../Card'
-import Restaurant from '../Restaurant'
 
-export type Cardapio = {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
+import Restaurant from '../Restaurant'
+import Menu from '../../models/Menu'
 
 export type GridListProps = {
   restaurants?: RestaurantModel[]
   isRestaurant: boolean
   columnGrid?: 2 | 3
-  menu?: Cardapio[]
+  menu?: Menu[]
 }
 
 const GridList = ({ restaurants, isRestaurant, menu }: GridListProps) => {
@@ -37,16 +29,7 @@ const GridList = ({ restaurants, isRestaurant, menu }: GridListProps) => {
               cover={restaurant.capa}
             />
           ))
-        : menu?.map((food) => (
-            <Card
-              key={food.id}
-              name={food.nome}
-              description={food.descricao}
-              photo={food.foto}
-              price={food.preco}
-              portion={food.porcao}
-            />
-          ))}
+        : menu?.map((food) => <Card key={food.id} menu={food} />)}
     </GridListContainer>
   )
 }

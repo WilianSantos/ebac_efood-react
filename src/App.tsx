@@ -1,14 +1,21 @@
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
 import GlobalStyle from './styles'
 import ProjectRoutes from './routes'
 
+import store from './store'
+import Sidebar from './components/Sidebar'
+
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <ProjectRoutes />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <ProjectRoutes />
+        <Sidebar />
+      </BrowserRouter>
+    </Provider>
   )
 }
 

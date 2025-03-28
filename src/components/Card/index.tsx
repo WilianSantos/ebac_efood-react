@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import {
   CardClose,
@@ -6,39 +7,45 @@ import {
   CardDescription,
   CardImage,
   CardTitle,
-  Modal,
-  Overlay
+  Modal
 } from './styles'
 import btnClose from '../../assets/images/close.png'
+import { Overlay } from '../../styles'
 
 import Button from '../Button'
 import { limitingString } from '../Restaurant'
 
+import { add, open } from '../../store/reducers/cart'
+
+import Menu from '../../models/Menu'
+
 type CardProps = {
-  photo: string
-  name: string
-  description: string
-  price: number
-  portion: string
+  menu: Menu
 }
 
-const Card = ({ name, description, photo, price, portion }: CardProps) => {
+export const formatPrice = (price = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
+}
+
+const Card = ({ menu }: CardProps) => {
   const [isActive, setIsActive] = useState(false)
 
-  const formatPrice = (price = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price)
-  }
+  const dispatch = useDispatch()
 
+  const addToCart = () => {
+    dispatch(add(menu))
+    dispatch(open())
+  }
   return (
     <>
       <CardContainer>
-        <CardImage src={photo} alt={name} />
+        <CardImage src={menu.foto} alt={menu.nome} />
         <div>
-          <CardTitle>{name}</CardTitle>
-          <CardDescription>{limitingString(description)}</CardDescription>
+          <CardTitle>{menu.nome}</CardTitle>
+          <CardDescription>{limitingString(menu.descricao)}</CardDescription>
           <Button
             background="light"
             width="100%"
@@ -52,17 +59,17 @@ const Card = ({ name, description, photo, price, portion }: CardProps) => {
       {isActive && (
         <>
           <Modal className="card-action">
-            <CardImage src={photo} alt={name} />
+            <CardImage src={menu.foto} alt={menu.nome} />
             <div>
-              <CardTitle>{name}</CardTitle>
+              <CardTitle>{menu.foto}</CardTitle>
               <CardDescription>
-                {description}
+                {menu.descricao}
                 <br />
                 <br />
-                <span>{'Serve: de ' + portion}</span>
+                <span>{'Serve: de ' + menu.porcao}</span>
               </CardDescription>
-              <Button background="light">
-                {'Adicionar ao carrinho - ' + formatPrice(price)}
+              <Button onClick={addToCart} background="light">
+                {'Adicionar ao carrinho - ' + formatPrice(menu.preco)}
               </Button>
             </div>
           </Modal>

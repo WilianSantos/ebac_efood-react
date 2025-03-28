@@ -26,4 +26,14 @@ export const Container = styled.div`
   margin: 0 auto;
 `
 
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.8;
+`
+
 export default GlobalStyle

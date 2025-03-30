@@ -14,7 +14,7 @@ import Button from '../Button'
 import { Overlay } from '../../styles'
 import * as S from './styles'
 
-const Sidebar = () => {
+const Checkout = () => {
   const { isOpen, items, total } = useSelector(
     (state: RootReducer) => state.cart
   )
@@ -445,4 +445,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Checkout

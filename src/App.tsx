@@ -5,7 +5,7 @@ import GlobalStyle from './styles'
 import ProjectRoutes from './routes'
 
 import store from './store'
-import Sidebar from './components/Sidebar'
+import Checkout from './components/Checkout'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <ProjectRoutes />
-        <Sidebar />
+        <Checkout />
       </BrowserRouter>
     </Provider>
   )

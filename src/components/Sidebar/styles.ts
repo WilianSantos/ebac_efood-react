@@ -140,5 +140,10 @@ export const InputGroup = styled.div<InputGroupProps>`
     &.error {
       border: 1px solid ${colors.red};
     }
+
+    &::focus {
+      outline: none;
+      border: 1px solid ${colors.primary};
+    }
   }
 `

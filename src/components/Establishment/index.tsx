@@ -2,16 +2,12 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-import {
-  RestaurantContainer,
-  RestaurantDescription,
-  RestaurantImage,
-  RestaurantInfos,
-  RestaurantTags
-} from './styles'
-
 import Tag from '../Tag'
 import Button from '../Button'
+
+import { limitingString } from '../../utils'
+
+import * as S from './styles'
 
 type RestaurantProps = {
   id: number
@@ -23,14 +19,7 @@ type RestaurantProps = {
   cover: string
 }
 
-export function limitingString(string: string) {
-  if (string.length > 250) {
-    return string.slice(0, 250) + '...'
-  }
-  return string
-}
-
-const Restaurant = ({
+const Establishment = ({
   id,
   title,
   highlighted,
@@ -40,9 +29,9 @@ const Restaurant = ({
   cover
 }: RestaurantProps) => {
   return (
-    <RestaurantContainer>
-      <RestaurantImage src={cover} alt={title} />
-      <RestaurantInfos>
+    <S.RestaurantContainer>
+      <S.RestaurantImage src={cover} alt={title} />
+      <S.RestaurantInfos>
         <div>
           <h2>{title}</h2>
           <span>
@@ -50,19 +39,19 @@ const Restaurant = ({
             <FontAwesomeIcon icon={faStar} className="fa-star" />
           </span>
         </div>
-        <RestaurantDescription>
+        <S.RestaurantDescription>
           {limitingString(description)}
-        </RestaurantDescription>
+        </S.RestaurantDescription>
         <Link to={`/profile/${id}`}>
           <Button background="dark">Saiba mais</Button>
         </Link>
-      </RestaurantInfos>
-      <RestaurantTags>
+      </S.RestaurantInfos>
+      <S.RestaurantTags>
         {highlighted && <Tag>Destaque da semana</Tag>}
         <Tag>{type}</Tag>
-      </RestaurantTags>
-    </RestaurantContainer>
+      </S.RestaurantTags>
+    </S.RestaurantContainer>
   )
 }
 
-export default Restaurant
+export default Establishment

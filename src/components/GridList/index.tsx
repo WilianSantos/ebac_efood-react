@@ -1,13 +1,10 @@
+import Card from '../Card'
+import Establishment from '../Establishment'
+
 import { GridListContainer } from './styles'
 
-import RestaurantModel from '../../models/Restaurant'
-import Card from '../Card'
-
-import Restaurant from '../Restaurant'
-import Menu from '../../models/Menu'
-
 export type GridListProps = {
-  restaurants?: RestaurantModel[]
+  restaurants?: Restaurant[]
   isRestaurant: boolean
   columnGrid?: 2 | 3
   menu?: Menu[]
@@ -18,7 +15,7 @@ const GridList = ({ restaurants, isRestaurant, menu }: GridListProps) => {
     <GridListContainer columnGrid={isRestaurant ? 2 : 3}>
       {isRestaurant
         ? restaurants?.map((restaurant) => (
-            <Restaurant
+            <Establishment
               key={restaurant.id}
               id={restaurant.id}
               title={restaurant.titulo}

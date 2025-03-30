@@ -5,37 +5,32 @@ import {
   faFacebookF
 } from '@fortawesome/free-brands-svg-icons'
 
-import {
-  FooterContainer,
-  FooterDescription,
-  SocialMedia,
-  SocialMediaItem
-} from './styles'
+import * as S from './styles'
 import logo from '../../assets/images/logo.png'
 
 const Footer = () => {
   return (
-    <FooterContainer>
+    <S.FooterContainer>
       <img src={logo} alt="Logo" />
 
-      <SocialMedia>
-        <SocialMediaItem>
+      <S.SocialMedia>
+        <S.SocialMediaItem>
           <FontAwesomeIcon icon={faInstagram} className="fa-social-media" />
-        </SocialMediaItem>
-        <SocialMediaItem>
+        </S.SocialMediaItem>
+        <S.SocialMediaItem>
           <FontAwesomeIcon icon={faFacebookF} className="fa-social-media" />
-        </SocialMediaItem>
-        <SocialMediaItem>
+        </S.SocialMediaItem>
+        <S.SocialMediaItem>
           <FontAwesomeIcon icon={faTwitter} className="fa-social-media" />
-        </SocialMediaItem>
-      </SocialMedia>
+        </S.SocialMediaItem>
+      </S.SocialMedia>
 
-      <FooterDescription>
+      <S.FooterDescription>
         A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
         estabelecimento contratado.
-      </FooterDescription>
-    </FooterContainer>
+      </S.FooterDescription>
+    </S.FooterContainer>
   )
 }
 

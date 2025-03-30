@@ -1,17 +1,17 @@
 import { Container } from '../../styles'
-import { HeroContainer, TitleHero } from './styles'
+import * as S from './styles'
 import logo from '../../assets/images/logo.png'
 
 const Hero = () => {
   return (
-    <HeroContainer>
+    <S.HeroContainer>
       <Container>
         <img src={logo} alt="Logo" />
-        <TitleHero>
+        <S.TitleHero>
           Viva experiências gastronômicas no conforto da sua casa
-        </TitleHero>
+        </S.TitleHero>
       </Container>
-    </HeroContainer>
+    </S.HeroContainer>
   )
 }
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { RestaurantDescription } from '../Restaurant/styles'
+import { RestaurantDescription } from '../Establishment/styles'
 
 export const CardImage = styled.img`
   width: 100%;

@@ -97,18 +97,24 @@ export const RemoveItem = styled.button`
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
   margin-bottom: 24px;
 
   h4 {
     font-size: 16px;
     font-weight: 700;
+    margin-bottom: 16px;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
     margin-bottom: 8px;
   }
 `
 export const FormRow = styled.div`
   display: flex;
   column-gap: 34px;
+  margin-bottom: 8px;
 `
 export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
@@ -130,5 +136,9 @@ export const InputGroup = styled.div<InputGroupProps>`
     font-weight: 700;
     width: 100%;
     height: 32px;
+
+    &.error {
+      border: 1px solid ${colors.red};
+    }
   }
 `

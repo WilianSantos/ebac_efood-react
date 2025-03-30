@@ -1,13 +1,18 @@
-import { Container } from '../../styles'
-
 import Hero from '../../components/Hero'
 import ProductList from '../../components/GridList'
 import Footer from '../../components/Footer'
+import Loader from '../../components/Loader'
 
 import { useGetRestaurantsQuery } from '../../services/api'
 
+import { Container } from '../../styles'
+
 const Home = () => {
-  const { data: restaurants } = useGetRestaurantsQuery()
+  const { data: restaurants, isLoading } = useGetRestaurantsQuery()
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   return (
     <>

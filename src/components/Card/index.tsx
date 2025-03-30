@@ -1,33 +1,17 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import {
-  CardClose,
-  CardContainer,
-  CardDescription,
-  CardImage,
-  CardTitle,
-  Modal
-} from './styles'
+import Button from '../Button'
+
+import { formatPrice, limitingString } from '../../utils'
+import { add, open } from '../../store/reducers/cart'
+
+import * as S from './styles'
 import btnClose from '../../assets/images/close.png'
 import { Overlay } from '../../styles'
 
-import Button from '../Button'
-import { limitingString } from '../Restaurant'
-
-import { add, open } from '../../store/reducers/cart'
-
-import Menu from '../../models/Menu'
-
 type CardProps = {
   menu: Menu
-}
-
-export const formatPrice = (price = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(price)
 }
 
 const Card = ({ menu }: CardProps) => {
@@ -41,11 +25,13 @@ const Card = ({ menu }: CardProps) => {
   }
   return (
     <>
-      <CardContainer>
-        <CardImage src={menu.foto} alt={menu.nome} />
+      <S.CardContainer>
+        <S.CardImage src={menu.foto} alt={menu.nome} />
         <div>
-          <CardTitle>{menu.nome}</CardTitle>
-          <CardDescription>{limitingString(menu.descricao)}</CardDescription>
+          <S.CardTitle>{menu.nome}</S.CardTitle>
+          <S.CardDescription>
+            {limitingString(menu.descricao)}
+          </S.CardDescription>
           <Button
             background="light"
             width="100%"
@@ -54,27 +40,27 @@ const Card = ({ menu }: CardProps) => {
             Mais detalhes
           </Button>
         </div>
-      </CardContainer>
+      </S.CardContainer>
 
       {isActive && (
         <>
-          <Modal className="card-action">
-            <CardImage src={menu.foto} alt={menu.nome} />
+          <S.Modal className="card-action">
+            <S.CardImage src={menu.foto} alt={menu.nome} />
             <div>
-              <CardTitle>{menu.foto}</CardTitle>
-              <CardDescription>
+              <S.CardTitle>{menu.foto}</S.CardTitle>
+              <S.CardDescription>
                 {menu.descricao}
                 <br />
                 <br />
                 <span>{'Serve: de ' + menu.porcao}</span>
-              </CardDescription>
+              </S.CardDescription>
               <Button onClick={addToCart} background="light">
                 {'Adicionar ao carrinho - ' + formatPrice(menu.preco)}
               </Button>
             </div>
-          </Modal>
+          </S.Modal>
           <Overlay onClick={() => setIsActive(false)} />
-          <CardClose
+          <S.CardClose
             src={btnClose}
             alt="Fechar"
             onClick={() => setIsActive(false)}

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import bgImage from '../../assets/images/vector.png'
-import { colors, Container } from '../../styles'
+import { breakpoints, colors, Container } from '../../styles'
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -17,6 +17,12 @@ export const HeaderContainer = styled.header`
 
     span {
       cursor: pointer;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
     }
   }
 `

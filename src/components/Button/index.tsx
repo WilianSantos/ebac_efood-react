@@ -4,6 +4,7 @@ export type ButtonProps = {
   children: string
   width?: string
   background: 'light' | 'dark'
+  type?: 'button' | 'submit'
   onClick?: () => void
 }
 

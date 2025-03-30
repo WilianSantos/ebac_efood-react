@@ -4,8 +4,14 @@ export const colors = {
   primary: '#E66767',
   white: '#FFFFFF',
   black: '#4B4B4B',
+  red: '#D92525',
   backgroundLight: '#FFF8F2',
   backgroundDark: '#FFEBD9'
+}
+
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -25,6 +31,13 @@ export const Container = styled.div`
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 80%;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 90%;
+  }
 `
 
 export const Overlay = styled.div`

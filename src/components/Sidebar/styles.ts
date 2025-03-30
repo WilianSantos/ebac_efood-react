@@ -129,7 +129,7 @@ export const InputGroup = styled.div<InputGroupProps>`
 
   input {
     padding: 8px;
-    border: 1px solid ${colors.backgroundDark};
+    border: 2px solid ${colors.backgroundDark};
     background-color: ${colors.backgroundDark};
     color: ${colors.black};
     font-size: 14px;
@@ -138,12 +138,11 @@ export const InputGroup = styled.div<InputGroupProps>`
     height: 32px;
 
     &.error {
-      border: 1px solid ${colors.red};
+      border: 2px solid ${colors.red};
     }
 
-    &::focus {
+    &:focus {
       outline: none;
-      border: 1px solid ${colors.primary};
     }
   }
 `
